@@ -1,4 +1,4 @@
-package br.com.unicos.payment.api.dto.request.response;
+package br.com.unicos.payment.api.dto.response.response;
 
 import java.time.Instant;
 
