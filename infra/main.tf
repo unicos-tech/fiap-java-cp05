@@ -3,8 +3,8 @@ provider "google" {
   region  = "southamerica-east1"
 }
 
-resource "google_cloud_run_v2_service" "ms-payments" {
-  name                = "ms-payments"
+resource "google_cloud_run_v2_service" "ms-checkout" {
+  name                = "ms-checkout"
   location            = "southamerica-east1"
   deletion_protection = false
   ingress             = "INGRESS_TRAFFIC_ALL"
@@ -14,6 +14,7 @@ resource "google_cloud_run_v2_service" "ms-payments" {
       image = "IMAGE_URL_PLACEHOLDER"
       ports { container_port = 8080 }
       resources {
+        # cpu_idle = false
         limits = {
           cpu    = "1"
           memory = "512Mi"
@@ -29,8 +30,8 @@ resource "google_cloud_run_v2_service" "ms-payments" {
 }
 
 resource "google_cloud_run_v2_service_iam_member" "noauth" {
-  location = google_cloud_run_v2_service.cp05service.location
-  name     = google_cloud_run_v2_service.cp05service.name
+  location = google_cloud_run_v2_service.ms-checkout.location
+  name     = google_cloud_run_v2_service.ms-checkout.name
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
