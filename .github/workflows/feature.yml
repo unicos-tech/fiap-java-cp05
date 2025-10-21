@@ -9,9 +9,12 @@ jobs:
   build-java:
     name: Build and Push Java Application
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [checkout, pagamento, sms, stock]
     env:
-      IMAGE_TAG: southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest
-      WORKDIR: ./microsservicos/checkout
+      IMAGE_TAG: southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-${{ matrix.service }}:latest
+      WORKDIR: ./microsservicos/${{ matrix.service }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
