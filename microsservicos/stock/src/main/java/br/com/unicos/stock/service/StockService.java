@@ -4,15 +4,18 @@ import br.com.unicos.stock.dto.OrderRequest;
 import br.com.unicos.stock.model.ProductStock;
 import br.com.unicos.stock.repository.ProductStockRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service @RequiredArgsConstructor
 public class StockService {
+    @Autowired
     private ProductStockRepository repository;
 
     @Transactional
     public void apply(OrderRequest order){
+        System.out.println("Mensagem recebida da fila: " + order.toString());
         order.getItems().forEach(i -> {
             var ps = repository.findById(i.getSku()).orElse(new ProductStock(i.getSku(), 0));
             ps.setQuantity(Math.max(0, ps.getQuantity() - i.getQuantity()));
