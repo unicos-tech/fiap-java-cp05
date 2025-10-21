@@ -3,23 +3,37 @@ provider "google" {
   region  = "southamerica-east1"
 }
 
-resource "google_cloud_run_v2_service" "ms-checkout" {
-  name                = "ms-checkout"
+locals {
+  services = {
+    "ms-checkout"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
+    "ms-pagamento"     = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-pagamento:latest"
+    "ms-sms"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-sms:latest"
+    "ms-stock"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-stock:latest"
+  }
+}
+
+resource "google_cloud_run_v2_service" "service" {
+  for_each            = local.services
+  name                = each.key
   location            = "southamerica-east1"
   deletion_protection = false
   ingress             = "INGRESS_TRAFFIC_ALL"
 
   template {
     containers {
-      image = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
+      image = each.value
       ports { container_port = 8080 }
       resources {
-        # cpu_idle = false
+        cpu_idle = false
         limits = {
           cpu    = "1"
           memory = "512Mi"
         }
       }
+    }
+
+    annotations = {
+      "redeploy-trigger" = timestamp()
     }
   }
 
@@ -30,8 +44,9 @@ resource "google_cloud_run_v2_service" "ms-checkout" {
 }
 
 resource "google_cloud_run_v2_service_iam_member" "noauth" {
-  location = google_cloud_run_v2_service.ms-checkout.location
-  name     = google_cloud_run_v2_service.ms-checkout.name
+  for_each = local.services
+  location = google_cloud_run_v2_service.service[each.key].location
+  name     = google_cloud_run_v2_service.service[each.key].name
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
