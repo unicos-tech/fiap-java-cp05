@@ -32,6 +32,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// https://mvnrepository.com/artifact/com.konghq/unirest-java-bom
+	implementation 'com.konghq:unirest-java-bom:4.5.1'
+	// https://mvnrepository.com/artifact/com.konghq/unirest-java-core
+	compileOnly 'com.konghq:unirest-java-core:4.5.1'
+
 }
 
 tasks.named('test') {
