@@ -64,4 +64,4 @@ jobs:
         with:
           context: ${{ env.WORKDIR }}
           push: true
-          tags: southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest
+          tags: southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-${{ matrix.service }}:latest
