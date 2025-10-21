@@ -1,5 +1,12 @@
 package br.com.unicos.stock.dto;
-import lombok.*; import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+import java.util.*;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class OrderRequest { private String orderId; private java.util.List<ProductItem> items; }
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class OrderRequest {
+    private String orderId;
+    private List<ProductItem> items;
+}
