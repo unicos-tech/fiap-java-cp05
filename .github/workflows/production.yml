@@ -15,7 +15,7 @@ jobs:
         service:
           - checkout
           # - pagamento
-          # - sms
+          - sms
           - stock
     env:
       IMAGE_TAG: southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-${{ matrix.service }}:latest
