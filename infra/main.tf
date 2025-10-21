@@ -7,7 +7,7 @@ locals {
   services = {
     "ms-checkout" = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
     # "ms-pagamento"     = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-pagamento:latest"
-    # "ms-sms"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-sms:latest"
+    "ms-sms"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-sms:latest"
     "ms-stock"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-stock:latest"
   }
 }
@@ -70,6 +70,16 @@ resource "google_cloud_run_v2_service" "service" {
         value_source {
           secret_key_ref {
             secret  = "projects/319629332081/secrets/mongodb-connection-string"
+            version = "latest"
+          }
+        }
+      }
+
+      env {
+        name = "SMSDEV_API_KEY"
+        value_source {
+          secret_key_ref {
+            secret  = "projects/319629332081/secrets/smsdev-api-key"
             version = "latest"
           }
         }
