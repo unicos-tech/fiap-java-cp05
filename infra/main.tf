@@ -11,7 +11,7 @@ resource "google_cloud_run_v2_service" "ms-checkout" {
 
   template {
     containers {
-      image = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/teste:latest"
+      image = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
       ports { container_port = 8080 }
       resources {
         # cpu_idle = false
