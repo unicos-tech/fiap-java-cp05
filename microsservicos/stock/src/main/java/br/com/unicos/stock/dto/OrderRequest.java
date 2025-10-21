@@ -1,4 +1,4 @@
-package br.com.unicos.estoque.dto;
+package br.com.unicos.stock.dto;
 import lombok.*; import java.util.*;
 
 @Data @NoArgsConstructor @AllArgsConstructor

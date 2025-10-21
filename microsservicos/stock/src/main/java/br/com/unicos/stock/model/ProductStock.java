@@ -1,4 +1,4 @@
-package br.com.unicos.estoque.model;
+package br.com.unicos.stock.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

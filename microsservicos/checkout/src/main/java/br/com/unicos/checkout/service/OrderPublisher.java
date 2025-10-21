@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service @RequiredArgsConstructor
 public class OrderPublisher {
-    private final RabbitTemplate template;
+    private RabbitTemplate template;
 
     public void publish(OrderRequest order){
         template.convertAndSend(RabbitConfig.EXCHANGE, RabbitConfig.ROUTING, order);
