@@ -5,7 +5,7 @@ provider "google" {
 
 locals {
   services = {
-    "ms-checkout"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
+    "ms-checkout" = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
     "ms-pagamento"     = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-pagamento:latest"
     "ms-sms"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-sms:latest"
     "ms-stock"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-stock:latest"
@@ -28,6 +28,50 @@ resource "google_cloud_run_v2_service" "service" {
         limits = {
           cpu    = "1"
           memory = "512Mi"
+        }
+      }
+
+      env {
+        name = "RABBITMQ_HOST"
+        value_source {
+          secret_key_ref {
+            secret  = "projects/319629332081/secrets/rabbitmq-host"
+            version = "latest"
+          }
+        }
+      }
+
+      env {
+        name  = "RABBITMQ_PORT"
+        value = "5672"
+      }
+      env {
+        name = "RABBITMQ_USER"
+        value_source {
+          secret_key_ref {
+            secret  = "projects/319629332081/secrets/rabbitmq-user"
+            version = "latest"
+          }
+        }
+      }
+
+      env {
+        name = "RABBITMQ_PASSWORD"
+        value_source {
+          secret_key_ref {
+            secret  = "projects/319629332081/secrets/rabbitmq-password"
+            version = "latest"
+          }
+        }
+      }
+
+      env {
+        name = "MONGODB_URI"
+        value_source {
+          secret_key_ref {
+            secret  = "projects/319629332081/secrets/mongodb-connection-string"
+            version = "latest"
+          }
         }
       }
     }
