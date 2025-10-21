@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "service" {
       image = each.value
       ports { container_port = 8080 }
       resources {
-        cpu_idle = false
+        cpu_idle = true
         limits = {
           cpu    = "1"
           memory = "512Mi"
