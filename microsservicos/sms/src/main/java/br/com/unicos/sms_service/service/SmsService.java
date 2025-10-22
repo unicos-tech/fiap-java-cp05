@@ -24,6 +24,6 @@ public class SmsService {
         );
 
         HttpResponse<String> response = Unirest.get(url).asString();
-        System.out.println(response.toString());
+        System.out.println(response.getBody());
     }
 }
