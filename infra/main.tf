@@ -6,7 +6,7 @@ provider "google" {
 locals {
   services = {
     "ms-checkout" = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-checkout:latest"
-    # "ms-pagamento"     = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-pagamento:latest"
+    "ms-pagamento"     = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-pagamento:latest"
     "ms-sms"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-sms:latest"
     "ms-stock"   = "southamerica-east1-docker.pkg.dev/cp5java/cp5repo/ms-stock:latest"
   }
