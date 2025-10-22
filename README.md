@@ -8,7 +8,7 @@ Este projeto implementa uma arquitetura de microsserviços para um sistema de e-
 
 ### Diagrama de Arquitetura
 
-<img src="https://imgur.com/5y4RmfB" alt="Diagrama de Arquitetura" />
+<img src="https://i.imgur.com/5y4RmfB.png" alt="Diagrama de Arquitetura" />
 
 ### Microsserviços
 
