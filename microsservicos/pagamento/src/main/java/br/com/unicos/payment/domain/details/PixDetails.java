@@ -1,10 +1,8 @@
-package br.com.unicos.payment.api.dto.request.pagamento;
+package br.com.unicos.payment.domain.details;
 
-import jakarta.validation.constraints.NotBlank;
-
-public class PixDados extends DadosPagamento {
-    @NotBlank private String chavePix;
-    private String tipoChave;
+public class PixDetails {
+    private String chavePix;   // email/cel/cnpj/aleatória (ideal: mascarar/hashear)
+    private String tipoChave;  // EMAIL|CELULAR|CNPJ|ALEATORIA
 
     public String getChavePix() { return chavePix; }
     public void setChavePix(String chavePix) { this.chavePix = chavePix; }

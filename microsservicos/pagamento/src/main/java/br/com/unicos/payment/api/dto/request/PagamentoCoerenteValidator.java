@@ -13,17 +13,17 @@ public class PagamentoCoerenteValidator
         if (req == null) return true;
         if (req.getMetodo() == null || req.getDadosPagamento() == null) return true;
 
-        boolean coerente =
+        boolean ok =
                 (req.getMetodo() == PaymentMethod.CARTAO && req.getDadosPagamento() instanceof CartaoDados)
                         || (req.getMetodo() == PaymentMethod.PIX    && req.getDadosPagamento() instanceof PixDados);
 
-        if (!coerente) {
+        if (!ok) {
             ctx.disableDefaultConstraintViolation();
             ctx.buildConstraintViolationWithTemplate(
                             "dadosPagamento não compatível com metodo (" + req.getMetodo() + ")")
                     .addPropertyNode("dadosPagamento")
                     .addConstraintViolation();
         }
-        return coerente;
+        return ok;
     }
 }

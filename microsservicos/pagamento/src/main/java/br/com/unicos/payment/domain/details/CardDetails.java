@@ -1,12 +1,9 @@
-package br.com.unicos.payment.api.dto.request.pagamento;
+package br.com.unicos.payment.domain.details;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-
-public class CartaoDados extends DadosPagamento {
-    @NotBlank private String tokenCartao;
-    @Pattern(regexp = "^(0[1-9]|1[0-2])\\/\\d{2}$", message = "formato MM/AA")
-    private String validade;
+public class CardDetails {
+    // Guarde apenas token/últimos 4; nunca PAN completo
+    private String tokenCartao;
+    private String validade;   // MM/AA (apenas para demo; em produção evite)
     private String bandeira;
     private String nomeTitular;
 
