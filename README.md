@@ -1,5 +1,16 @@
 # FIAP - Checkpoint 5 Java - Arquitetura de Microsserviços
 
+## 👥 Autores
+
+**Grupo UNICOS**
+
+- Cauã Marcelo da Silva Machado - RM558024
+- Gabriel Marques de Lima Sousa - RM554889
+- Leonardo Matheus Teixeira - RM556629
+- Leonardo Menezes Parpinelli Ribas - RM557908
+
+Repositório: [fiap-java-cp05](https://github.com/unicos-tech/fiap-java-cp05)
+
 ## 📋 Descrição do Projeto
 
 Este projeto implementa uma arquitetura de microsserviços para um sistema de e-commerce, desenvolvido como parte do Checkpoint 5 da FIAP. O sistema é composto por quatro microsserviços independentes que se comunicam de forma assíncrona através do RabbitMQ, seguindo os princípios de arquitetura orientada a eventos.
@@ -367,19 +378,3 @@ cd microsservicos/checkout
 - IAM configurado para Cloud Run
 - Comunicação entre serviços via mensageria assíncrona
 - Validação de dados de entrada
-
-## 👥 Autores
-
-**Grupo UNICOS**
-
-- Cauã Marcelo da Silva Machado - RM558024
-- Gabriel Marques de Lima Sousa - RM554889
-- Leonardo Matheus Teixeira - RM556629
-- Leonardo Menezes Parpinelli Ribas - RM557908
-
-- Repository: [fiap-java-cp05](https://github.com/unicos-tech/fiap-java-cp05)
-
----
-
-**FIAP - Faculdade de Informática e Administração Paulista**
-*Checkpoint 5 - Arquitetura de Microsserviços com Java e Spring Boot*
